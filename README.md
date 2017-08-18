@@ -1,15 +1,28 @@
 # cinnamon
-Pantsu media player client
 
-TODO: description
+> A pantsu client
 
-* https://github.com/sciter-sdk/go-sciter -- UI library
-* https://github.com/anacrolix/torrent -- Torrent library
-* ??? -- Media player
-* https://github.com/ileyd/pantsuAPI -- pantsu API
+#### Build Setup
 
-# Basic brief
-  * strong integration with Pantsu APIs
-  * integrated media player to play pantsu content
-  * integrated BT client to fetch fantsu content
-  * Taiga-like features (low priority
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:9080
+npm run dev
+
+# build electron application for production
+npm run build
+
+# run unit & end-to-end tests
+npm test
+
+
+# lint all JS/Vue component files in `src/`
+npm run lint
+
+```
+
+---
+
+This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
