@@ -1,7 +1,7 @@
 <template>
     <v-layout row justify-center>
         <v-dialog v-model="dialog" fullscreen transition="dialog-bottom-transition" :overlay=false>
-            <v-btn primary dark slot="activator" @click="stream($store.state.file)">Open Internal Player</v-btn>
+            <v-btn primary dark slot="activator">Open Internal Player</v-btn>
             <v-card>
                 <v-toolbar dark class="primary">
                     <v-btn icon @click.native="dialog = false" dark>
@@ -18,6 +18,7 @@
 
 <script>/* eslint-disable indent */
 import WebTorrent from 'webtorrent'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Player',
   data () {
@@ -38,24 +39,25 @@ export default {
         }
     }
   },
+  computed: mapGetters([
+    'filePath',
+    'magnetURI'
+  ]),
   mounted () {
-    console.log('this is current videojs instance object', this.myVideoPlayer)
-    this.stream(this.$store.state.file)
+    // console.log('this is current videojs instance object', this.myVideoPlayer)
+    this.stream(this.magnetURI)
   },
   methods: {
     stream: function (magnetURI) {
       let client = new WebTorrent()
-      let self = this
       console.log(magnetURI)
-      client.add(magnetURI, {path: './'}, function (torrent) {
+      client.add(magnetURI, {path: '/tmp/'}, function (torrent) {
         let file = torrent.files.find(function (file) {
           return file.name.endsWith('.mp4')
         })
         if (file) {
           console.log('compatible mp4 file found')
-          self.playerOptions.sources.src = file.path
-          self.videojs.init('div#video', self.playerOptions)
-          // file.appendTo('.video')
+          file.appendTo('.video')
         } else {
           console.log('no compatible mp4 file')
         }

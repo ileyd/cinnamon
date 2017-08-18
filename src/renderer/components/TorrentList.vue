@@ -2,7 +2,7 @@
     <v-layout justify-center align-center row wrap>
         <v-flex xs12>
             <div class="text-xs-center">
-                <img src="/static/logo.png" alt="Pantsu Logo" class="mb-5"/>
+                <img src="https://nyaa.pantsu.cat/img/logo.png" alt="Pantsu Logo" class="mb-5"/>
             </div>
             <v-card>
                 <v-toolbar>
